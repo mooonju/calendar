@@ -8,6 +8,9 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <script src="../../static/fullcalendar-6.0.3/dist/index.global.js"></script>
 
     <script>
@@ -15,10 +18,27 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                // events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
+                //     {
+                //         title:'일정',
+                //         start:'2021-05-26 00:00:00',
+                //         end:'2021-05-27 24:00:00' 
+                //         // color 값을 추가해 색상도 변경 가능 자세한 내용은 하단의 사이트 참조
+                //     }
+                // ], headerToolbar: {
+                //     center: 'addEventButton' // headerToolbar에 버튼을 추가
+                // }, customButtons: {
+                //     addEventButton: { // 추가한 버튼 설정
+                //         text : "일정 추가",  // 버튼 내용
+                //         click : function(){ // 버튼 클릭 시 이벤트 추가
+                //             $("#calendarModal").modal("show"); // modal 나타내기
+                //         }
+                //     }
                 dateClick: function(info) {
                     alert('Clicked on: ' + info.dateStr); // 날짜 띄우는 것까지 성공 ㅅㅂ
                     // change the day's background color just for fun
                     info.dayEl.style.backgroundColor = 'red';
+                    $("#calendarModal").modal("show");
                 }
             });
             calendar.render();
@@ -28,31 +48,38 @@
 </head>
 <body>
 <div id="calendar"></div>
-<!-- Edit Modal -->
-<div class="modal fade" id="schedule-edit">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Your Schedule</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form>
+    <!-- modal 추가 -->
+    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                        <label>Schedule Name:</label>
-                        <input type="text" class="form-control">
+                        <label for="taskId" class="col-form-label">일정 내용</label>
+                        <input type="text" class="form-control" id="calendar_content" name="calendar_content">
+                        <label for="taskId" class="col-form-label">시작 날짜</label>
+                        <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
+                        <label for="taskId" class="col-form-label">종료 날짜</label>
+                        <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
                     </div>
-                </form>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Save Your Schedule</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="sprintSettingModalClose">취소</button>
+                </div>
+    
             </div>
         </div>
     </div>
-</div>
+[출처] [2021.05.26] FullCalendar - 일정 캘린더 구현|작성자 psy승짱
+
+
 </body>
 </html>
