@@ -1,3 +1,30 @@
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;border-style:solid;border-width:1px;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:0px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-la1s{background-color:#ffffff;border-color:inherit;font-size:15px;text-align:center;vertical-align:bottom}
+.tg .tg-y67q{background-color:#ffffff;border-color:inherit;font-size:15px;text-align:center;vertical-align:middle}
+.tg .tg-m684{background-color:#ffffff;border-color:inherit;font-size:15px;text-align:left;vertical-align:middle}
+.tg .tg-4dm3{border-color:inherit;font-size:15px;text-align:left;vertical-align:middle}
+
+.td-box {
+  width: 150px;
+  height: 160px;
+}
+
+.pet-profile {
+  width: 100%;
+  height: 100%;
+  border-radius: 70%;
+}
+
+table {
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .btn {
   font-weight: bold;
 }
